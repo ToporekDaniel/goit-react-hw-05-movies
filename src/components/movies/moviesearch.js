@@ -18,7 +18,6 @@ export const GetMoviesByName = ({ query }) => {
     };
 
     fetchMoviesByName();
-    console.log(searchedMovies);
   }, [query]);
   console.log(searchedMovies);
 

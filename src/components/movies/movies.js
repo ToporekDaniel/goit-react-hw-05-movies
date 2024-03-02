@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { GetMoviesByName } from './moviesearch';
-import { useNavigate } from 'react-router-dom';
 
 //formulaż do wyszukiwania filmów w api
 
 export const Movies = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
 
   const handleSearch = async e => {
     e.preventDefault();
-    navigate(`/movies?query=${searchTerm}`);
   };
 
   return (
