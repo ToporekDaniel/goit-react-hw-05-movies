@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 
-//tu mają się wyszukać filmy na czasie
+//to ma zrobić listę filmów po wyszukaniu nazwy w api
 
-export const GetTrends = () => {
+export const GetMoviesByName = () => {
   const createList = () => {
     const listItems = [];
     for (let i = 0; i < 11; i++) {
       listItems.push(
         <li key={i}>
-          <Link to="#">ala ma kota</Link>
+          <Link to="#">wysukiwanie z forma</Link>
         </li>
       );
     }
