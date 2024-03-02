@@ -1,18 +1,35 @@
+import { axiosConfig } from 'components/axios/axiosconfig';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //to ma zrobić listę filmów po wyszukaniu nazwy w api
 
-export const GetMoviesByName = () => {
+export const GetMoviesByName = ({ query }) => {
+  const [searchedMovies, setSearchedMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchMoviesByName = async () => {
+      try {
+        const response = await axiosConfig.get(`/search/movie?query=${query}`);
+        setSearchedMovies(response.data.results);
+      } catch (error) {
+        console.error('Error fetching trending movies:', error);
+      }
+    };
+
+    fetchMoviesByName();
+    console.log(searchedMovies);
+  }, [query]);
+  console.log(searchedMovies);
+
   const createList = () => {
-    const listItems = [];
-    for (let i = 0; i < 11; i++) {
-      listItems.push(
-        <li key={i}>
-          <Link to="#">wysukiwanie z forma</Link>
-        </li>
-      );
-    }
-    return listItems;
+    return searchedMovies.map(movie => (
+      <li key={movie.id}>
+        <Link to={`/movies/${movie.id}`}>
+          {movie.title ? movie.title : movie.name}
+        </Link>
+      </li>
+    ));
   };
 
   return <ul>{createList()}</ul>;

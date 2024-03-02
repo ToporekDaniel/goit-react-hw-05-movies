@@ -10,12 +10,10 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />}>
-          <Route path="byname" element={<GetMoviesByName />} />
-        </Route>
-        <Route path="movies/:id" element={<Home />}>
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<Home />}>
           <Route path="cast" element={<GetMoviesByName />} />
-          <Route path="revievs" element={<GetMoviesByName />} />
+          <Route path="reviews" element={<GetMoviesByName />} />
         </Route>
       </Routes>
     </BrowserRouter>
