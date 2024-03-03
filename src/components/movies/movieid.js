@@ -2,7 +2,7 @@
 
 import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,13 +20,14 @@ export const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [movieId]);
-  console.log(details);
-  console.log(movieId);
 
   return (
     <div>
       <h2>{details.title || details.name}</h2>
       <p>{details.overview}</p>
+      <Link to="cast">Cast</Link>
+      <Link to="reviews">Reviews</Link>
+      <Outlet />
     </div>
   );
 };

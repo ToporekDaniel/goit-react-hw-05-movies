@@ -1,4 +1,4 @@
-import { GetTrends } from 'gettrends/gettrends';
+import { GetTrends } from 'components/gettrends/gettrends';
 
 export const Home = () => {
   return (

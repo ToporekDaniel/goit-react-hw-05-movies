@@ -19,7 +19,6 @@ export const GetMoviesByName = ({ query }) => {
 
     fetchMoviesByName();
   }, [query]);
-  console.log(searchedMovies);
 
   const createList = () => {
     return searchedMovies.map(movie => (

@@ -30,7 +30,5 @@ export const GetTrends = () => {
     ));
   };
 
-  console.log(trendingMovies);
-
   return <ul>{createList()}</ul>;
 };
