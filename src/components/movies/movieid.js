@@ -20,14 +20,33 @@ export const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [movieId]);
-
+  console.log(details);
   return (
     <div>
-      <h2>{details.title || details.name}</h2>
+      {details.poster_path && (
+        <img
+          src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+          alt="Movie Poster"
+        />
+      )}
+      <h2>
+        {details.title || details.name}{' '}
+        {details.release_date && `(${details.release_date.split('-')[0]})`}
+      </h2>
+
+      <p>User score: {Math.round(details.vote_average * 10)}%</p>
+      <h3>Overview</h3>
       <p>{details.overview}</p>
-      <Link to="cast">Cast</Link>
-      <Link to="reviews">Reviews</Link>
-      <Outlet />
+      <h3>Genres</h3>
+      <p>
+        {details.genres &&
+          details.genres.map(genre => <span>{genre.name} </span>)}
+      </p>
+      <div>
+        <Link to="cast">Cast</Link>
+        <Link to="reviews">Reviews</Link>
+        <Outlet />
+      </div>
     </div>
   );
 };
