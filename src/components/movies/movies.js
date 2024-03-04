@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { GetMoviesByName } from './moviesearch';
+import GetMoviesByName from './moviesearch';
 
 //formulaż do wyszukiwania filmów w api
 
-export const Movies = () => {
+const Movies = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [query, setQuery] = useState('');
 
@@ -22,3 +22,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

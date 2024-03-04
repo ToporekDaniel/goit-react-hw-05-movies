@@ -1,6 +1,6 @@
-import { GetTrends } from 'components/gettrends/gettrends';
+import GetTrends from 'components/gettrends/gettrends';
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
@@ -9,3 +9,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

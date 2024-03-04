@@ -4,7 +4,7 @@ import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [castInfo, setCast] = useState([]);
 
@@ -38,3 +38,5 @@ export const Cast = () => {
 
   return <ul>{createList()}</ul>;
 };
+
+export default Cast;

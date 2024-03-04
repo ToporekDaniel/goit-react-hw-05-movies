@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 //to ma zrobić listę filmów po wyszukaniu nazwy w api
 
-export const GetMoviesByName = ({ query }) => {
+const GetMoviesByName = ({ query }) => {
   const [searchedMovies, setSearchedMovies] = useState([]);
 
   useEffect(() => {
@@ -32,3 +32,5 @@ export const GetMoviesByName = ({ query }) => {
 
   return <ul>{createList()}</ul>;
 };
+
+export default GetMoviesByName;

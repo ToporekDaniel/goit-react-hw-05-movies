@@ -4,7 +4,7 @@ import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [details, setDetails] = useState({});
 
@@ -51,3 +51,5 @@ export const MovieDetails = () => {
     </div>
   );
 };
+
+export default MovieDetails;

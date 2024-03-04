@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 //stały header na stronie
 
-export const Header = () => {
+const Header = () => {
   return (
     <header>
       <nav>
@@ -12,3 +12,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

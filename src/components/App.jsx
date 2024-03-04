@@ -1,23 +1,28 @@
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Header } from './header/header';
-import { Home } from './home/home';
-import { Movies } from './movies/movies';
-import { MovieDetails } from './movies/movieid';
-import { Cast } from './cast/cast';
-import { Reviews } from './reviews/reviews';
+import Header from './header/header';
+import Home from './home/home';
+
+// Zmienione importy na dynamiczne ładowanie
+const Movies = lazy(() => import('./movies/movies'));
+const MovieDetails = lazy(() => import('./movies/movieid'));
+const Cast = lazy(() => import('./cast/cast'));
+const Reviews = lazy(() => import('./reviews/reviews'));
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };

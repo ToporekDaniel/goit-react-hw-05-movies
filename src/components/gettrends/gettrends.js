@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 //tu mają się wyszukać filmy na czasie
 
-export const GetTrends = () => {
+const GetTrends = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
@@ -32,3 +32,4 @@ export const GetTrends = () => {
 
   return <ul>{createList()}</ul>;
 };
+export default GetTrends;
