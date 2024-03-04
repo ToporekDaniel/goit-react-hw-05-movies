@@ -25,6 +25,12 @@ export const Cast = () => {
   const createList = () => {
     return castInfo.map(cast => (
       <li key={cast.cast_id}>
+        <img
+          src={`https://image.tmdb.org/t/p/w200${cast.profile_path}`}
+          alt={`${cast.name}'s profile`}
+        />
+        <p>{cast.name}</p>
+
         <p>{cast.character}</p>
       </li>
     ));

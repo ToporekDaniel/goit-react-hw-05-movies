@@ -11,7 +11,9 @@ export const Reviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axiosConfig.get(`/movie/${movieId}/reviews`);
+        const response = await axiosConfig.get(
+          `/movie/${movieId}/reviews?page=1`
+        );
         setRewiews(response.data.results);
       } catch (error) {
         console.error('Error fetching trending movies:', error);
@@ -24,8 +26,9 @@ export const Reviews = () => {
 
   const createList = () => {
     return reviews.map(review => (
-      <li key={review.cast_id}>
-        <p>{review.character}</p>
+      <li key={review.id}>
+        <h4>{review.author}</h4>
+        <p>{review.content}</p>
       </li>
     ));
   };

@@ -44,6 +44,7 @@ export const MovieDetails = () => {
       </p>
       <div>
         <Link to="cast">Cast</Link>
+        <br />
         <Link to="reviews">Reviews</Link>
         <Outlet />
       </div>

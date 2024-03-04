@@ -5,19 +5,17 @@ import { GetMoviesByName } from './moviesearch';
 
 export const Movies = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [query, setQuery] = useState('');
 
   const handleSearch = async e => {
     e.preventDefault();
+    setSearchTerm(query);
   };
 
   return (
     <main>
       <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-        />
+        <input type="text" onChange={e => setQuery(e.target.value)} />
         <button type="submit">Search</button>
       </form>
       <GetMoviesByName query={searchTerm} />
