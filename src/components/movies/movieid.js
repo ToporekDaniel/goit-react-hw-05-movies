@@ -41,6 +41,7 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
   console.log(details);
+
   return (
     <div>
       <Link to="#" onClick={() => window.history.back()}>
