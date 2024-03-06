@@ -3,6 +3,27 @@
 import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+const GridUl = styled.ul`
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+`;
+
+const Actor = styled.li`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`;
+
+const DivFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -24,19 +45,20 @@ const Cast = () => {
 
   const createList = () => {
     return castInfo.map(cast => (
-      <li key={cast.cast_id}>
+      <Actor key={cast.cast_id}>
         <img
           src={`https://image.tmdb.org/t/p/w200${cast.profile_path}`}
           alt={`${cast.name}'s profile`}
         />
-        <p>{cast.name}</p>
-
-        <p>{cast.character}</p>
-      </li>
+        <DivFlex>
+          <p>{cast.name}</p>
+          <p>as {cast.character}</p>
+        </DivFlex>
+      </Actor>
     ));
   };
 
-  return <ul>{createList()}</ul>;
+  return <GridUl>{createList()}</GridUl>;
 };
 
 export default Cast;

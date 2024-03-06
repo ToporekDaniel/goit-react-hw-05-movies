@@ -3,6 +3,26 @@
 import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+const InfoDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+`;
+
+const Poster = styled.img`
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  padding-right: 20px;
+`;
+
+const MoreInfo = styled.div`
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+`;
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -23,31 +43,38 @@ const MovieDetails = () => {
   console.log(details);
   return (
     <div>
-      {details.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-          alt="Movie Poster"
-        />
-      )}
-      <h2>
-        {details.title || details.name}{' '}
-        {details.release_date && `(${details.release_date.split('-')[0]})`}
-      </h2>
+      <Link to="#" onClick={() => window.history.back()}>
+        Go Back
+      </Link>
+      <InfoDiv>
+        {details.poster_path && (
+          <Poster
+            src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+            alt="Movie Poster"
+          />
+        )}
+        <div>
+          <h2>
+            {details.title || details.name}{' '}
+            {details.release_date && `(${details.release_date.split('-')[0]})`}
+          </h2>
 
-      <p>User score: {Math.round(details.vote_average * 10)}%</p>
-      <h3>Overview</h3>
-      <p>{details.overview}</p>
-      <h3>Genres</h3>
-      <p>
-        {details.genres &&
-          details.genres.map(genre => <span>{genre.name} </span>)}
-      </p>
-      <div>
+          <p>User score: {Math.round(details.vote_average * 10)}%</p>
+          <h3>Overview</h3>
+          <p>{details.overview}</p>
+          <h3>Genres</h3>
+          <p>
+            {details.genres &&
+              details.genres.map(genre => <span>{genre.name} </span>)}
+          </p>
+        </div>
+      </InfoDiv>
+      <MoreInfo>
         <Link to="cast">Cast</Link>
         <br />
         <Link to="reviews">Reviews</Link>
-        <Outlet />
-      </div>
+      </MoreInfo>
+      <Outlet />
     </div>
   );
 };
