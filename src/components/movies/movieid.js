@@ -4,6 +4,7 @@ import { axiosConfig } from 'components/axios/axiosconfig';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import BigBox from 'components/bigbox/bigbox';
 
 const InfoDiv = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ const MovieDetails = () => {
   console.log(details);
 
   return (
-    <div>
+    <BigBox>
       <Link to="#" onClick={() => window.history.back()}>
         Go Back
       </Link>
@@ -76,7 +77,7 @@ const MovieDetails = () => {
         <Link to="reviews">Reviews</Link>
       </MoreInfo>
       <Outlet />
-    </div>
+    </BigBox>
   );
 };
 
